@@ -21,12 +21,16 @@ public class principal extends javax.swing.JFrame {
      */
     public principal() {
         initComponents();
+<<<<<<< HEAD
         setLocationRelativeTo(null);
         gbd = new GestionBD();
         generoAlum();
         jornadaAlum();
         generoProf();
         
+=======
+          setLocationRelativeTo(null);
+>>>>>>> e2dd8a5d9d946b7ecff0c45639aa79f96014b1ca
     }
     
                
