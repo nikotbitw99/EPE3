@@ -18,6 +18,7 @@ public class login extends javax.swing.JFrame {
      */
     public login() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -54,7 +55,7 @@ public class login extends javax.swing.JFrame {
                 btn_ingresarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 100, 50));
+        jPanel1.add(btn_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 100, 50));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("INGRESE SU CONTRASEÑA");

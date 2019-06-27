@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package principal;
+import gestionbd.GestionBD;
+import java.sql.SQLException;
+import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -11,12 +15,74 @@ package principal;
  */
 public class principal extends javax.swing.JFrame {
 
+    GestionBD gbd;
     /**
      * Creates new form principal
      */
     public principal() {
         initComponents();
+        setLocationRelativeTo(null);
+        gbd = new GestionBD();
+        generoAlum();
+        jornadaAlum();
+        generoProf();
+        
     }
+    
+               
+  
+    
+      public void generoAlum(){
+        
+        ButtonGroup genero_alumno = new ButtonGroup ();
+        genero_alumno.add(rb_masculino);
+        genero_alumno.add(rb_femenino);
+        
+    
+      }
+      
+      public void jornadaAlum(){
+          
+          
+          
+          ButtonGroup jor_alumno = new ButtonGroup ();
+          jor_alumno.add(rb_manana);
+          jor_alumno.add(rb_tarde);
+          
+          
+          
+      }
+      
+      
+      public void asignaturaProf(){
+          
+        ButtonGroup asig_profe = new ButtonGroup ();
+        asig_profe.add(cb_leng);
+        asig_profe.add(cb_mat);
+        asig_profe.add(cb_hist);
+        asig_profe.add(cb_cie);
+        asig_profe.add(cb_ing);
+        asig_profe.add(cb_fis);
+          
+          
+          
+          
+          
+      }
+      
+      public void generoProf(){
+          
+          
+          
+          ButtonGroup genProf = new ButtonGroup();
+          genProf.add(rb_mascprof);
+          genProf.add(rb_femprof);
+          
+          
+          
+          
+      }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,7 +110,7 @@ public class principal extends javax.swing.JFrame {
         rb_femenino = new javax.swing.JRadioButton();
         btn_ingresar_alumno = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        rb_mañana = new javax.swing.JRadioButton();
+        rb_manana = new javax.swing.JRadioButton();
         rb_tarde = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -99,22 +165,29 @@ public class principal extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         txt_asig_cod = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        txt_nom_prof = new javax.swing.JTextField();
-        txt_cod_asignatura = new javax.swing.JTextField();
-        txt_nom_asig = new javax.swing.JTextField();
-        rb_8hrs = new javax.swing.JRadioButton();
-        rb_2hrs = new javax.swing.JRadioButton();
-        rb_4hrs = new javax.swing.JRadioButton();
-        btn_ingrear_asignatura = new javax.swing.JButton();
-        jLabel28 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
+        tbl_profe = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        btn_mostrar_alumno = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbl_alumno = new javax.swing.JTable();
+        jPanel9 = new javax.swing.JPanel();
+        mostrar_prof = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbl_profesor = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel30 = new javax.swing.JLabel();
+        txt_rut_alumno = new javax.swing.JTextField();
+        btn_delete_alumno = new javax.swing.JButton();
+        jLabel28 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel31 = new javax.swing.JLabel();
+        txt_rut_profesor = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel29 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,17 +200,17 @@ public class principal extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("RUT");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 30, 20));
-        jPanel1.add(txt_rut, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 80, -1));
+        jPanel1.add(txt_rut, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 100, -1));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("NOMBRE");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
-        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 80, -1));
+        jPanel1.add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 100, -1));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("APELLIDO P.");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
-        jPanel1.add(txt_apellidop, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 80, -1));
+        jPanel1.add(txt_apellidop, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 90, -1));
 
         jLabel7.setForeground(new java.awt.Color(240, 240, 240));
         jLabel7.setText("APELLIDO M.");
@@ -146,29 +219,44 @@ public class principal extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(240, 240, 240));
         jLabel8.setText("SEXO");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, -1, -1));
-        jPanel1.add(txt_apellidom, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 80, -1));
+        jPanel1.add(txt_apellidom, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 90, -1));
 
         rb_masculino.setText("MASCULINO");
+        rb_masculino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_masculinoActionPerformed(evt);
+            }
+        });
         jPanel1.add(rb_masculino, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 33, 90, 20));
 
         rb_femenino.setText("FEMENINO");
+        rb_femenino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_femeninoActionPerformed(evt);
+            }
+        });
         jPanel1.add(rb_femenino, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 90, -1));
 
         btn_ingresar_alumno.setText("INGRESAR");
+        btn_ingresar_alumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ingresar_alumnoActionPerformed(evt);
+            }
+        });
         jPanel1.add(btn_ingresar_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, -1, 40));
 
         jLabel9.setForeground(new java.awt.Color(240, 240, 240));
         jLabel9.setText("JORNADA");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, -1));
 
-        rb_mañana.setText("MAÑANA");
-        jPanel1.add(rb_mañana, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, -1, -1));
+        rb_manana.setText("MAÑANA");
+        jPanel1.add(rb_manana, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, -1, -1));
 
         rb_tarde.setText("TARDE");
         jPanel1.add(rb_tarde, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 70, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 435));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 420));
 
         jLabel10.setText("jLabel10");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, -1, -1));
@@ -202,9 +290,9 @@ public class principal extends javax.swing.JFrame {
                 txt_apellidoprofActionPerformed(evt);
             }
         });
-        jPanel2.add(txt_apellidoprof, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 70, -1));
-        jPanel2.add(txt_rutprof, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 70, -1));
-        jPanel2.add(txt_nomprof, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 70, -1));
+        jPanel2.add(txt_apellidoprof, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 90, -1));
+        jPanel2.add(txt_rutprof, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 90, -1));
+        jPanel2.add(txt_nomprof, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 90, -1));
 
         rb_mascprof.setText("MASCULINO");
         jPanel2.add(rb_mascprof, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 90, -1));
@@ -236,6 +324,11 @@ public class principal extends javax.swing.JFrame {
         jPanel2.add(cb_fis, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 100, -1));
 
         btn_ingresar_profesor.setText("INGRESAR");
+        btn_ingresar_profesor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ingresar_profesorActionPerformed(evt);
+            }
+        });
         jPanel2.add(btn_ingresar_profesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 323, -1, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
@@ -341,44 +434,6 @@ public class principal extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Notas", jPanel3);
 
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel29.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel29.setText("COD DE ASIGNATURA");
-        jPanel4.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
-
-        jLabel30.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel30.setText("NOMBRE");
-        jPanel4.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
-
-        jLabel31.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel31.setText("HORAS SEMANALES");
-        jPanel4.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
-
-        jLabel32.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel32.setText("PROFESOR QUE LA IMPARTE");
-        jPanel4.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
-        jPanel4.add(txt_nom_prof, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 100, -1));
-        jPanel4.add(txt_cod_asignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 100, 20));
-        jPanel4.add(txt_nom_asig, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 100, -1));
-
-        rb_8hrs.setText("8 HRS");
-        jPanel4.add(rb_8hrs, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, -1));
-
-        rb_2hrs.setText("2 HRS");
-        jPanel4.add(rb_2hrs, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, -1, -1));
-
-        rb_4hrs.setText("4 HRS");
-        jPanel4.add(rb_4hrs, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, -1, -1));
-
-        btn_ingrear_asignatura.setText("ingresar");
-        jPanel4.add(btn_ingrear_asignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 303, 100, 50));
-
-        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
-        jPanel4.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 456, 435));
-
-        jTabbedPane2.addTab("Asignaturas", jPanel4);
-
         jPanel5.add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 440));
 
         jTabbedPane1.addTab("Insertar", jPanel5);
@@ -387,9 +442,132 @@ public class principal extends javax.swing.JFrame {
         jTabbedPane1.addTab("Actualizar", jPanel6);
 
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tbl_profe.setBorder(new javax.swing.border.MatteBorder(null));
+
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_mostrar_alumno.setText("MOSTRAR DATOS");
+        btn_mostrar_alumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_mostrar_alumnoActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btn_mostrar_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 313, 380, 50));
+
+        tbl_alumno.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "RUT", "NOMBRE", "APELLIDO P.", "APELLIDO M.", "SEXO", "JORNADA"
+            }
+        ));
+        jScrollPane1.setViewportView(tbl_alumno);
+
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        tbl_profe.addTab("Alumno", jPanel4);
+
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        mostrar_prof.setText("MOSTRAR DATOS");
+        mostrar_prof.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrar_profActionPerformed(evt);
+            }
+        });
+        jPanel9.add(mostrar_prof, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 313, 420, 40));
+
+        tbl_profesor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "RUT", "NOMBRE", "APELLIDO", "SEXO", "ASIGNATURA"
+            }
+        ));
+        jScrollPane2.setViewportView(tbl_profesor);
+
+        jPanel9.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        tbl_profe.addTab("Profesor", jPanel9);
+
+        jPanel7.add(tbl_profe, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 440));
+
         jTabbedPane1.addTab("Mostrar", jPanel7);
 
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTabbedPane3.setBorder(new javax.swing.border.MatteBorder(null));
+
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel30.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel30.setText("RUT DEL ALUMNO");
+        jPanel10.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+
+        txt_rut_alumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_rut_alumnoActionPerformed(evt);
+            }
+        });
+        jPanel10.add(txt_rut_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 140, 30));
+
+        btn_delete_alumno.setText("ELIMINAR");
+        btn_delete_alumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_delete_alumnoActionPerformed(evt);
+            }
+        });
+        jPanel10.add(btn_delete_alumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 293, 190, 60));
+
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
+        jPanel10.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jTabbedPane3.addTab("Alumno", jPanel10);
+
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel31.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel31.setText("RUT DEL PROFESOR");
+        jPanel11.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+        jPanel11.add(txt_rut_profesor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 130, 30));
+
+        jButton1.setText("ELIMINAR");
+        jPanel11.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 140, 60));
+
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
+        jPanel11.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 420));
+
+        jTabbedPane3.addTab("Profesor", jPanel11);
+
+        jPanel8.add(jTabbedPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 440));
+
         jTabbedPane1.addTab("Eliminar", jPanel8);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -406,21 +584,153 @@ public class principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_apellidoprofActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_apellidoprofActionPerformed
+    private void txt_nota3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nota3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_apellidoprofActionPerformed
-
-    private void rb_femprofActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_femprofActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_femprofActionPerformed
+    }//GEN-LAST:event_txt_nota3ActionPerformed
 
     private void rb_inglesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_inglesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rb_inglesActionPerformed
 
-    private void txt_nota3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nota3ActionPerformed
+    private void rb_femprofActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_femprofActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nota3ActionPerformed
+    }//GEN-LAST:event_rb_femprofActionPerformed
+
+    private void txt_apellidoprofActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_apellidoprofActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_apellidoprofActionPerformed
+
+    private void rb_masculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_masculinoActionPerformed
+
+        genero = "Masculino";
+        
+        
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_rb_masculinoActionPerformed
+
+    private void rb_femeninoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_femeninoActionPerformed
+
+    genero = "Femenino";    
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_rb_femeninoActionPerformed
+
+    private void mostrar_profActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrar_profActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mostrar_profActionPerformed
+
+    private void btn_ingresar_alumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresar_alumnoActionPerformed
+ try{
+        
+        int rut = Integer.parseInt(txt_rut.getText());
+        String nombre = txt_nombre.getText();
+        String apellido_p = txt_apellidop.getText();
+        String apellido_m = txt_apellidom.getText();
+        String sexo = "";
+         String jornada = "";
+        if (rb_masculino.isSelected())
+             sexo = "Maculino";
+         if (rb_femenino.isSelected())
+             sexo = "Femenino";
+        
+         
+        if (rb_manana.isSelected())
+            jornada = "Mañana";
+        if (rb_tarde.isSelected())
+            jornada = "Tarde";
+        
+        
+        gbd.insertarDatos_alumno(rut, nombre, apellido_p, apellido_m, sexo, jornada);
+     }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error: " + e, 
+                    "Error ", JOptionPane.ERROR_MESSAGE);
+        }
+
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_btn_ingresar_alumnoActionPerformed
+
+    private void btn_ingresar_profesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresar_profesorActionPerformed
+ 
+        
+        try{
+        
+        int rut = Integer.parseInt(txt_rutprof.getText());
+        String nombre = txt_nomprof.getText();
+        String apellido = txt_apellidoprof.getText();
+        String sexo = "";
+         String asignatura = "";
+        if (rb_mascprof.isSelected())
+             sexo = "Maculino";
+         if (rb_femprof.isSelected())
+             sexo = "Femenino";
+        
+         
+        if (cb_leng.isSelected())
+            asignatura = "Lenguaje";
+        if (cb_mat.isSelected())
+            asignatura = "Matematicas";
+        if (cb_hist.isSelected())
+            asignatura = "Historia";
+        if (cb_cie.isSelected())
+            asignatura = "Ciencias";
+        if (cb_ing.isSelected())
+            asignatura = "Ingles";
+        if (cb_fis.isSelected())
+            asignatura = "Ed. Fisica";
+        
+        
+        
+        gbd.insertarDatos_profesor(rut, nombre, apellido, sexo, asignatura);
+        
+        
+         }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error: " + e, 
+                    "Error!!", JOptionPane.ERROR_MESSAGE);
+        }
+
+
+
+
+
+
+
+
+
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_btn_ingresar_profesorActionPerformed
+
+    private void btn_mostrar_alumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mostrar_alumnoActionPerformed
+    
+gbd.mostrarDatosAlumno(tbl_alumno);
+
+
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_btn_mostrar_alumnoActionPerformed
+
+    private void txt_rut_alumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_rut_alumnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_rut_alumnoActionPerformed
+
+    private void btn_delete_alumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_delete_alumnoActionPerformed
+ int rut = Integer.parseInt(txt_rut_alumno.getText());
+ 
+ gbd.EliminarDatosAlumno(rut);
+        
+
+
+
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_btn_delete_alumnoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -457,17 +767,24 @@ public class principal extends javax.swing.JFrame {
         });
     }
 
+    
+    public String genero;
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_ingrear_asignatura;
+    private javax.swing.JButton btn_delete_alumno;
     private javax.swing.JButton btn_ingresar_alumno;
     private javax.swing.JButton btn_ingresar_notas;
     private javax.swing.JButton btn_ingresar_profesor;
+    private javax.swing.JButton btn_mostrar_alumno;
     private javax.swing.JCheckBox cb_cie;
     private javax.swing.JCheckBox cb_fis;
     private javax.swing.JCheckBox cb_hist;
     private javax.swing.JCheckBox cb_ing;
     private javax.swing.JCheckBox cb_leng;
     private javax.swing.JCheckBox cb_mat;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -493,7 +810,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -501,6 +817,8 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -508,11 +826,13 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JRadioButton rb_2hrs;
-    private javax.swing.JRadioButton rb_4hrs;
-    private javax.swing.JRadioButton rb_8hrs;
+    private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JButton mostrar_prof;
     private javax.swing.JRadioButton rb_ciencias;
     private javax.swing.JRadioButton rb_femenino;
     private javax.swing.JRadioButton rb_femprof;
@@ -520,11 +840,14 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JRadioButton rb_historia;
     private javax.swing.JRadioButton rb_ingles;
     private javax.swing.JRadioButton rb_lenguaje;
+    private javax.swing.JRadioButton rb_manana;
     private javax.swing.JRadioButton rb_mascprof;
     private javax.swing.JRadioButton rb_masculino;
     private javax.swing.JRadioButton rb_matematicas;
-    private javax.swing.JRadioButton rb_mañana;
     private javax.swing.JRadioButton rb_tarde;
+    private javax.swing.JTable tbl_alumno;
+    private javax.swing.JTabbedPane tbl_profe;
+    private javax.swing.JTable tbl_profesor;
     private javax.swing.JTextField txt_acum1;
     private javax.swing.JTextField txt_acum2;
     private javax.swing.JTextField txt_acum3;
@@ -534,9 +857,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JTextField txt_apellidop;
     private javax.swing.JTextField txt_apellidoprof;
     private javax.swing.JTextField txt_asig_cod;
-    private javax.swing.JTextField txt_cod_asignatura;
-    private javax.swing.JTextField txt_nom_asig;
-    private javax.swing.JTextField txt_nom_prof;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_nomprof;
     private javax.swing.JTextField txt_nota1;
@@ -545,6 +865,8 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JTextField txt_nota4;
     private javax.swing.JTextField txt_profrut;
     private javax.swing.JTextField txt_rut;
+    private javax.swing.JTextField txt_rut_alumno;
+    private javax.swing.JTextField txt_rut_profesor;
     private javax.swing.JTextField txt_rutprof;
     // End of variables declaration//GEN-END:variables
 }
